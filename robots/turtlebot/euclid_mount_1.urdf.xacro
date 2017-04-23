@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<robot name="sensor_euclid_turtlebot_mount_1" xmlns:xacro="http://ros.org/wiki/xacro">
+   <xacro:include filename="$(find euclid)/euclid_description/urdf/euclid.urdf.xacro"/>
+   <xacro:macro name="sensor_euclid_turtlebot_mount_1" params="parent">
+   <joint name="mount_1_joint" type="fixed">
+     <origin xyz="-0.091 0.065 0.26" rpy="0 0 0" />
+     <parent link="${parent}"/>
+     <child link="euclid_link_mount_1"/>
+   </joint> 
+   <link name="euclid_link_mount_1"/>
+        
+    <xacro:sensor_euclid parent="euclid_link_mount_1">
+    </xacro:sensor_euclid>
+   </xacro:macro>
+</robot>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>euclid_description</name>
+  <version>1.0.0</version>
+  <description>Euclid description package</description>
+
+  <maintainer email="euclid.support@intel.com">Intel Euclid Support</maintainer>
+
+  <license>BSD 3-clause. See license attached</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+
+  </export>
+
+</package>

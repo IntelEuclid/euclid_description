@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<robot name="sensor_euclid" xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_gazebo.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_properties.urdf.xacro"/>
+
+   <xacro:macro name="sensor_euclid" params="parent">
+    <joint name="euclid_pan_joint" type="fixed">
+      <origin xyz="0.13 0.065 0.44" rpy="0 0 0" />
+      <parent link="${parent}"/>
+      <child link="euclid_link" />
+    </joint>
+    <link name="euclid_link">
+      <visual>
+       <origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/-2}"/>
+        <geometry>
+         <mesh filename="package://euclid_description/meshes/euclid.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.130 0.567 0.118"/>
+        </geometry>
+      </collision>
+      <!-- This inertial field needs doesn't contain reliable data!! -->
+      <inertial>
+        <mass value="0.564" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.003881243" ixy="0.0" ixz="0.0"
+                 iyy="0.000498940" iyz="0.0"
+                 izz="0.003879257" />
+      </inertial>
+    </link>  
+    <joint name="camera_joint" type="fixed">
+      <origin xyz="-0.01 -0.01 -0.03" />
+      <parent link="euclid_link"/>
+      <child link="camera_link" />
+    </joint>
+    <link name="camera_link">
+      
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.130 0.567 0.118"/>
+        </geometry>
+      </collision>
+      <!-- This inertial field needs doesn't contain reliable data!! -->
+      <inertial>
+        <mass value="0.564" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.003881243" ixy="0.0" ixz="0.0"
+                 iyy="0.000498940" iyz="0.0"
+                 izz="0.003879257" />
+      </inertial>
+    </link>  
+  </xacro:macro>
+</robot>
